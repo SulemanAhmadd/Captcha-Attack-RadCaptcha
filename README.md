@@ -13,7 +13,7 @@ python2
 ### Step 1: Setup and Activate virtual environment
 source env/bin/activate
 
-Install tensorflow: sudo pip install tensorflow
+Install tensorflow: (pip install tensorflow)
 
 ### Step 2: Run the script
 python2 attack.py
