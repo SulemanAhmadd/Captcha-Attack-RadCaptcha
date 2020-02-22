@@ -4,11 +4,11 @@ Plain captcha cracking using object detection. The testing scripts only works fo
 on any website.
 
 ## Requirements:
-virtualenv
+virtualenv (sudo pip install virtualenv)
 
 python2
 
-tensorflow
+tensorflow (sudo pip install tensorflow)
 
 ## Run:
 
