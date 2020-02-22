@@ -1,11 +1,10 @@
 from CAPTCHA_object_detection import *
+from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
 import urllib
 
 driver = webdriver.Firefox(executable_path="./driver/geckodriver")
 driver.get("https://demos.telerik.com/aspnet-ajax/captcha/examples/overview/defaultcs.aspx")
-#print()
-
 
 while (1):
 
@@ -15,7 +14,7 @@ while (1):
 
 		# clear previous entry
 		inputElement = driver.find_element_by_id("ctl00_ContentPlaceholder1_RadCaptcha1_CaptchaTextBox")
-		inputElement.send_keys("")
+		inputElement.clear()
 
 		# get the image source
 		img = driver.find_element_by_xpath('//img[@id="ctl00_ContentPlaceholder1_RadCaptcha1_CaptchaImage"]')
@@ -27,12 +26,22 @@ while (1):
 		# run model
 		captcha_text = Captcha_detection("captcha.jpeg")
 
-		# clear box, and upload outcome
-		inputElement = driver.find_element_by_id("ctl00_ContentPlaceholder1_RadCaptcha1_CaptchaTextBox")
+		# print to terminal and upload outcome
 		print(captcha_text)
 		inputElement.send_keys(captcha_text)
 
+	except KeyboardInterrupt:
+
+		print('\n')
+
+		try:
+			driver.close()
+			exit()
+		except:
+			exit()
+
 	except Exception:
 
-		driver.close()
-		break;
+		print ("Error Occured")
+		dirver.close()
+		exit()
